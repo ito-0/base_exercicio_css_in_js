@@ -1,31 +1,28 @@
-import styles from './Vaga.module.css'
+import { Vaga, VagaTitulo, VagaLink } from './styles'
 
-type Props = {
-  titulo: string
-  localizacao: string
-  nivel: string
-  modalidade: string
-  salarioMin: number
-  salarioMax: number
-  requisitos: string[]
+type VagaProps = {
+  vaga: {
+    titulo: string
+    localizacao: string
+    nivel: string
+    modalidade: string
+    salarioMin: number
+    salarioMax: number
+    requisitos: string[]
+  }
 }
 
-const Vaga = (props: Props) => (
-  <li className={styles.vaga}>
-    <h3 className={styles.vagaTitulo}>{props.titulo}</h3>
-    <ul>
-      <li>Localizacao: {props.localizacao}</li>
-      <li>Senioridade: {props.nivel}</li>
-      <li>Tipo de contratacao: {props.modalidade}</li>
-      <li>
-        Salário: {props.salarioMin} - {props.salarioMax}
-      </li>
-      <li>Requisitos: {props.requisitos.join(', ')}</li>
-    </ul>
-    <a className={styles.vagaLink} href="#">
-      Ver detalhes e candidatar-se
-    </a>
-  </li>
+const VagaComponent = ({ vaga }: VagaProps) => (
+  <Vaga>
+    <VagaTitulo>{vaga.titulo}</VagaTitulo>
+    <p>Localização: {vaga.localizacao}</p>
+    <p>Nível: {vaga.nivel}</p>
+    <p>Modalidade: {vaga.modalidade}</p>
+    <p>Salário Mínimo: R${vaga.salarioMin}</p>
+    <p>Salário Máximo: R${vaga.salarioMax}</p>
+    <p>Requisitos: {vaga.requisitos.join(', ')}</p>
+    <VagaLink href="#">Link da Vaga</VagaLink>
+  </Vaga>
 )
 
-export default Vaga
+export default VagaComponent
